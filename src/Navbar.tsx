@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { PATHS } from './constants';
 
 const LINKS = [
-  { path: PATHS.BASE, label: 'Home' },
+  { path: PATHS.HOME, label: 'Home' },
   { path: PATHS.GAME, label: 'Game' },
 ] as const;
 
