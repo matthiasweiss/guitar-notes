@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { PATHS } from './constants';
+import { PATHS } from '../constants';
 
 const LINKS = [
   { path: PATHS.HOME, label: 'Home' },
@@ -18,6 +18,7 @@ export const Navbar = () => {
         {LINKS.map((link) => {
           return (
             <Link
+              key={link.path}
               className={twMerge(
                 defaultClasses,
                 pathname === link.path && activeClasses,
