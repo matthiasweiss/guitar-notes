@@ -5,7 +5,7 @@ export const NoteCardList = () => {
   const { notes } = useNotes();
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap justify-center gap-2">
       {notes.map((note) => {
         return (
           <NoteCard

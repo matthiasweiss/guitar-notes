@@ -32,5 +32,10 @@ const notesDataMap: Record<Note, NoteData> = {
 };
 
 export const useNotes = () => {
-  return { notes, notesDataMap };
+  const randomNote = () => {
+    const randomIndex = Math.floor(Math.random() * notes.length);
+    return notes[randomIndex];
+  };
+
+  return { notes, notesDataMap, randomNote };
 };

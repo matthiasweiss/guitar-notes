@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { NoteCardList } from '../components/note-card-list';
-import { PATHS } from '../constants';
+import { NoteCardList } from '../../components/note-card-list';
+import { PATHS } from '../../constants';
 
-export default function Home() {
+export const Home = () => {
   return (
     <>
       <div className="flex flex-col">
@@ -16,4 +16,4 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
