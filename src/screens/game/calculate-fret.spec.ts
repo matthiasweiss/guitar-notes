@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { GuitarString } from '../../hooks/use-guitar-strings';
 import { calculateFret } from './calculate-fret';
 
