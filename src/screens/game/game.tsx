@@ -30,6 +30,10 @@ export const Game = () => {
     setState('initial');
   };
 
+  const checkAnswer = (selectedFret: number) => {
+    console.log(`Answer: ${selectedFret}, Correct: ${currentFret}`);
+  };
+
   const componentMap: Record<State, ReactNode> = {
     initial: (
       <>
@@ -39,8 +43,12 @@ export const Game = () => {
     running: (
       <div className="flex flex-col">
         Which fret is the {currentNote} note on the {currentString} string?
-        {notes.map((_, index) => {
-          return <button>{index}</button>;
+        {notes.map((note, index) => {
+          return (
+            <button key={note} onClick={() => checkAnswer(index)}>
+              {index}
+            </button>
+          );
         })}
         <button onClick={stop}>Stop</button>
       </div>
