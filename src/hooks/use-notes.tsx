@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { randomElement } from '../utils';
 
 const notes = [
   'C',
@@ -34,12 +34,7 @@ const notesDataMap: Record<Note, NoteData> = {
 };
 
 export const useNotes = () => {
-  const randomNote = useCallback(() => {
-    const randomIndex = Math.floor(Math.random() * notes.length);
-    return notes[randomIndex];
-  }, [notes]);
+  const randomNote = () => randomElement(notes);
 
-  return useMemo(() => {
-    return { notes, notesDataMap, randomNote };
-  }, [notes, notesDataMap, randomNote]);
+  return { notes, notesDataMap, randomNote };
 };
