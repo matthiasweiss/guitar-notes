@@ -6,7 +6,7 @@ export type GuitarString = Extract<Note, 'E' | 'A' | 'D' | 'G' | 'B'>;
 const guitarStrings: GuitarString[] = ['E', 'A', 'D', 'G', 'B'];
 
 export const useGuitarStrings = () => {
-  const randomString = () => randomElement(guitarStrings);
+  const randomGuitarString = () => randomElement(guitarStrings);
 
-  return { guitarStrings, randomString };
+  return { guitarStrings, randomGuitarString };
 };

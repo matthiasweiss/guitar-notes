@@ -9,8 +9,8 @@ export const Home = () => {
         <NoteCardList></NoteCardList>
         <div>
           Learning the guitar is hard, even tough there are only 12 unique
-          notes. This little app tries to improve your understanding of the 12
-          notes across the fretboard using a little game.
+          notes. I built the tools listed here to improve my understanding of
+          the fretboard and to assist me while practicing the guitar.
           <Link to={PATHS.GAME}>Go to game</Link>
         </div>
       </div>

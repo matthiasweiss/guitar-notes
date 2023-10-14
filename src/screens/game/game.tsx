@@ -7,12 +7,14 @@ type State = 'initial' | 'running' | 'stopped';
 
 export const Game = () => {
   const [state, setState] = useState<State>('initial');
+  const [selectedFret, setSelectedFret] = useState<number | null>(null);
+  const [areFretsHighlighted, setAreFretsHighlighted] = useState(false);
 
   const { randomNote, notes } = useNotes();
-  const { randomString } = useGuitarStrings();
+  const { randomGuitarString } = useGuitarStrings();
 
   const currentNote: Note = randomNote();
-  const currentString: GuitarString = randomString();
+  const currentString: GuitarString = randomGuitarString();
   const currentFret = calculateFret({
     note: currentNote,
     guitarString: currentString,
@@ -31,7 +33,26 @@ export const Game = () => {
   };
 
   const checkAnswer = (selectedFret: number) => {
+    setSelectedFret(selectedFret);
+    setAreFretsHighlighted(true);
+
     console.log(`Answer: ${selectedFret}, Correct: ${currentFret}`);
+    if (selectedFret === currentFret) {
+    }
+  };
+
+  const calculateClasses = (fret: number) => {
+    if (!areFretsHighlighted) {
+      return '';
+    }
+
+    if (fret === currentFret) {
+      return 'bg-green-500';
+    }
+
+    if (fret === selectedFret) {
+      return 'bg-red-500';
+    }
   };
 
   const componentMap: Record<State, ReactNode> = {
@@ -45,7 +66,11 @@ export const Game = () => {
         Which fret is the {currentNote} note on the {currentString} string?
         {notes.map((note, index) => {
           return (
-            <button key={note} onClick={() => checkAnswer(index)}>
+            <button
+              key={note}
+              onClick={() => checkAnswer(index)}
+              className={calculateClasses(index)}
+            >
               {index}
             </button>
           );
