@@ -96,10 +96,10 @@ export const Game = () => {
       <div className="flex flex-col">
         Which fret is the {current.note} note on the {current.guitarString}{' '}
         string?
-        {notes.map((note, index) => {
+        {notes.map((_, index) => {
           return (
             <button
-              key={note}
+              key={index}
               onClick={() => checkAnswer(index)}
               className={calculateClasses(index)}
             >

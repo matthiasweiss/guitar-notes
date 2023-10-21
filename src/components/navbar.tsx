@@ -9,27 +9,35 @@ const LINKS = [
 
 export const Navbar = () => {
   const { pathname } = useLocation();
-  const defaultClasses = 'bg-gray-200 px-8 py-4';
-  const activeClasses = 'bg-gray-300 text-gray-800';
+  const defaultClasses =
+    'px-8 py-4 border-b-2 border-gray-200 hover:border-gray-300';
+  const activeClasses = 'border-gray-700 hover:border-gray-700';
 
   return (
-    <ul className="flex py-4">
-      <li>
-        {LINKS.map((link) => {
-          return (
-            <Link
-              key={link.path}
-              className={twMerge(
-                defaultClasses,
-                pathname === link.path && activeClasses,
-              )}
-              to={link.path}
-            >
-              {link.label}
-            </Link>
-          );
-        })}
-      </li>
-    </ul>
+    <div className="flex w-full justify-center bg-gray-100">
+      <div className="flex w-full max-w-[1200px] gap-8">
+        <div className="flex select-none items-center text-gray-400">
+          Guitar Toolkit
+        </div>
+        <ul className="flex gap-4 py-4">
+          {LINKS.map((link) => {
+            return (
+              <li>
+                <Link
+                  key={link.path}
+                  className={twMerge(
+                    defaultClasses,
+                    pathname === link.path && activeClasses,
+                  )}
+                  to={link.path}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
   );
 };
