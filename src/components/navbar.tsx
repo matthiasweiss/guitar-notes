@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <div className="flex w-full justify-center bg-gray-100">
-      <div className="flex w-full max-w-[1200px] gap-8">
+      <div className="flex w-full max-w-[1000px] gap-8">
         <div className="flex select-none items-center text-gray-400">
           Guitar Toolkit
         </div>

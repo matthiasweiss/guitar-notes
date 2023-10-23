@@ -2,17 +2,17 @@ import { randomElement } from '../utils';
 
 const notes = [
   'C',
-  'G',
-  'D',
-  'A',
-  'E',
-  'B',
-  'F#',
   'C#',
-  'Ab',
+  'D',
   'Eb',
-  'Bb',
+  'E',
   'F',
+  'F#',
+  'G',
+  'Ab',
+  'A',
+  'Bb',
+  'B',
 ] as const;
 
 export type Note = (typeof notes)[number];
@@ -24,8 +24,8 @@ const notesDataMap: Record<Note, NoteData> = {
   D: { classList: 'bg-orange-500 text-orange-100' },
   A: { classList: 'bg-amber-500 text-amber-100' },
   E: { classList: 'bg-yellow-300 text-yellow-800' },
-  B: { classList: 'bg-green-300 text-green-900' },
-  'F#': { classList: 'bg-green-600 text-green-100' },
+  B: { classList: 'bg-lime-300 text-lime-900' },
+  'F#': { classList: 'bg-green-500 text-green-100' },
   'C#': { classList: 'bg-green-800 text-green-100' },
   Ab: { classList: 'bg-blue-800 text-blue-100' },
   Eb: { classList: 'bg-indigo-800 text-indigo-100' },
