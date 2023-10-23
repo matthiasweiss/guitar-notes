@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { PATHS } from '../constants';
+import { CONTENT_MAX_WIDTH, PATHS } from '../constants';
 
 const LINKS = [
   { path: PATHS.HOME, label: 'Home' },
@@ -9,13 +9,16 @@ const LINKS = [
 
 export const Navbar = () => {
   const { pathname } = useLocation();
+
+  const CONTAINER_CLASSES = `flex w-full gap-4 ${CONTENT_MAX_WIDTH}`;
+
   const defaultClasses =
     'px-8 py-4 border-b-2 border-gray-200 hover:border-gray-300';
   const activeClasses = 'border-gray-700 hover:border-gray-700';
 
   return (
     <div className="flex w-full justify-center bg-gray-100">
-      <div className="flex w-full max-w-[1000px] gap-8">
+      <div className={CONTAINER_CLASSES}>
         <div className="flex select-none items-center text-gray-400">
           Guitar Toolkit
         </div>

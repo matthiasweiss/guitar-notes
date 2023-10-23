@@ -8,7 +8,7 @@ export const NoteCard = ({ note, className }: NoteCardProps) => {
   const noteSpecificClasses = notesDataMap[note].classList;
 
   const defaultClasses =
-    'flex w-fit items-center justify-center rounded-full w-20 h-20 cursor-pointer';
+    'flex w-fit items-center justify-center rounded-full w-[4rem] h-[4rem] cursor-pointer';
 
   return (
     <div
