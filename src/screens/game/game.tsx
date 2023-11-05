@@ -79,11 +79,11 @@ export const Game = () => {
     }
 
     if (fret === current.fret) {
-      return 'bg-green-500';
+      return 'bg-green-600 text-green-100';
     }
 
     if (fret === selectedFret) {
-      return 'bg-red-500';
+      return 'bg-red-500 text-red-100';
     }
   };
 
