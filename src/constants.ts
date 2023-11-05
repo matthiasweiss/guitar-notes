@@ -3,4 +3,4 @@ export const PATHS = {
   GAME: '/game',
 } as const;
 
-export const CONTENT_MAX_WIDTH = 'max-w-[64rem]';
+export const CONTENT_MAX_WIDTH = 'max-w-[64rem] px-8';

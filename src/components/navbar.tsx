@@ -25,9 +25,8 @@ export const Navbar = () => {
         <ul className="flex gap-4 py-4">
           {LINKS.map((link) => {
             return (
-              <li>
+              <li key={link.path}>
                 <Link
-                  key={link.path}
                   className={twMerge(
                     defaultClasses,
                     pathname === link.path && activeClasses,

@@ -3,7 +3,7 @@ import { Navbar } from '../../components/navbar';
 import { CONTENT_MAX_WIDTH } from '../../constants';
 
 export const Layout = () => {
-  const CONTAINER_CLASSES = `flex w-full flex-col  gap-4 ${CONTENT_MAX_WIDTH}`;
+  const CONTAINER_CLASSES = `flex w-full flex-col items-center gap-4 ${CONTENT_MAX_WIDTH}`;
 
   return (
     <div className="flex flex-col items-center gap-4">

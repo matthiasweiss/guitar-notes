@@ -1,4 +1,5 @@
 import { ReactNode, useMemo, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { GuitarString, useGuitarStrings } from '../../hooks/use-guitar-strings';
 import { Note, useNotes } from '../../hooks/use-notes';
 import { calculateFret } from './calculate-fret';
@@ -89,34 +90,58 @@ export const Game = () => {
   const componentMap: Record<State, ReactNode> = {
     initial: (
       <div>
-        Initial <button onClick={start}>Start</button>
+        <div className="flex gap-4">
+          This game is used to practice where the 12 different notes are located
+          on each of the frets on the guitar. In each round, a random note and
+          string are gnerated and you have to pick the correct fret for that
+          note on the given string.
+        </div>
+        <a className="hover:cursor-pointer hover:underline" onClick={start}>
+          Start game
+        </a>
       </div>
     ),
     running: (
-      <div className="flex flex-col">
-        Which fret is the {current.note} note on the {current.guitarString}{' '}
-        string?
-        {notes.map((_, index) => {
-          return (
-            <button
-              key={index}
-              onClick={() => checkAnswer(index)}
-              className={calculateClasses(index)}
-            >
-              {index}
-            </button>
-          );
-        })}
-        <button onClick={showNextQuestion}>Next</button>
-        <button onClick={stop}>Stop</button>
+      <div className="border-1 flex w-full max-w-[640px] flex-col items-center gap-4 border-red-100">
         <div>
+          Which fret is the {current.note} note on the {current.guitarString}{' '}
+          string?
+        </div>
+        <div className="flex w-full flex-wrap justify-center gap-2">
+          {notes.map((_, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => checkAnswer(index)}
+                className={twMerge(
+                  'border-1 h-10 w-10 rounded-full bg-gray-200',
+                  calculateClasses(index),
+                )}
+              >
+                {index}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-center gap-4">
+          <button onClick={stop}>Stop</button>
+          <button onClick={showNextQuestion} disabled={!selectedFret}>
+            Next
+          </button>
+        </div>
+
+        <div className="text-gray-400">
           {correctAnswers.length}/{answers.length} correct answers so far
         </div>
       </div>
     ),
     stopped: (
       <div>
-        Stopped <button onClick={restart}>Restart</button>
+        <div>
+          Your final score was {correctAnswers.length}/{answers.length}!
+        </div>
+        <button onClick={restart}>Restart game</button>
       </div>
     ),
   };
