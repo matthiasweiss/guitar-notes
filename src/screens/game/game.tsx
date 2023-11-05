@@ -126,7 +126,7 @@ export const Game = () => {
 
         <div className="flex justify-center gap-4">
           <button onClick={stop}>Stop</button>
-          <button onClick={showNextQuestion} disabled={!selectedFret}>
+          <button onClick={showNextQuestion} disabled={selectedFret === null}>
             Next
           </button>
         </div>
@@ -137,9 +137,9 @@ export const Game = () => {
       </div>
     ),
     stopped: (
-      <div>
+      <div className="flex flex-col gap-4">
         <div>
-          Your final score was {correctAnswers.length}/{answers.length}!
+          Your final score was {correctAnswers.length}/{answers.length}
         </div>
         <button onClick={restart}>Restart game</button>
       </div>
