@@ -5,7 +5,7 @@ import { PATHS } from './constants';
 import './index.css';
 import { Game } from './screens/game/game.tsx';
 import { Home } from './screens/home/home.tsx';
-import { Layout } from './screens/layout/layout.tsx';
+import { Layout } from './screens/layout.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
