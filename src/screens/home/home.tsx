@@ -3,7 +3,7 @@ import { CircleOfFifths } from '../../components/circle-of-fifths';
 export const Home = () => {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-4">
         <CircleOfFifths></CircleOfFifths>
         <div>
           Learning the guitar is hard, even tough there are only 12 unique

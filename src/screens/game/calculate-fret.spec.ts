@@ -37,4 +37,11 @@ describe('calculateFret', () => {
     expect(calculateFret({ note: 'B', guitarString })).toStrictEqual(0);
     expect(calculateFret({ note: 'C', guitarString })).toStrictEqual(1);
   });
+
+  it('returns correct fret for e string', () => {
+    const guitarString: GuitarString = 'e';
+    expect(calculateFret({ note: 'Eb', guitarString })).toStrictEqual(11);
+    expect(calculateFret({ note: 'E', guitarString })).toStrictEqual(0);
+    expect(calculateFret({ note: 'F', guitarString })).toStrictEqual(1);
+  });
 });

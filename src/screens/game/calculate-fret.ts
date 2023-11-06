@@ -9,7 +9,9 @@ export const calculateFret = (params: {
   const { notes } = useNotes();
 
   const noteIndex = notes.indexOf(note);
-  const guitarStringIndex = notes.indexOf(guitarString);
+  const guitarStringIndex = notes.indexOf(
+    guitarString === 'e' ? 'E' : guitarString,
+  );
 
   const offset = noteIndex - guitarStringIndex;
   return offset >= 0 ? offset : offset + notes.length;

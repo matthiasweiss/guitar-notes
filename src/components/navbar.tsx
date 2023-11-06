@@ -19,7 +19,7 @@ export const Navbar = () => {
   return (
     <div className="flex w-full justify-center bg-gray-100">
       <div className={CONTAINER_CLASSES}>
-        <div className="flex select-none items-center py-4 text-gray-400">
+        <div className="flex min-w-[100px] select-none items-center whitespace-nowrap py-4 text-gray-400">
           Guitar Toolkit
         </div>
         <ul className="flex gap-4 py-4">
