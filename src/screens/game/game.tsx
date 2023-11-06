@@ -26,7 +26,7 @@ export const Game = () => {
 
   const [state, setState] = useState<State>('initial');
   const { randomNote, notes } = useNotes();
-  const { guitarStrings, randomGuitarString } = useGuitarStrings();
+  const { randomGuitarString } = useGuitarStrings();
 
   const current = useMemo(() => {
     const note = randomNote();
@@ -39,12 +39,6 @@ export const Game = () => {
       fret,
     };
   }, [currentQuestionNumber]);
-
-  const reversedGuitarStrings = [...guitarStrings].reverse();
-
-  // strings have a padding of pt-20 (= 80px) - height of note card (=40px) => 40px
-  const currentStringPaddingTop =
-    40 + reversedGuitarStrings.indexOf(current.guitarString) * 48 + 'px';
 
   const [selectedFret, setSelectedFret] = useState<number | null>(null);
   const [areFretsHighlighted, setAreFretsHighlighted] = useState(false);
@@ -101,8 +95,7 @@ export const Game = () => {
           This game is used to practice where the 12 different notes are located
           on each of the frets on the guitar. In each round, a random note and
           string are generated and you have to pick the correct fret for that
-          note on the given string. The current string is determined by the
-          location of the frets you can click.
+          note on the given string. The current string is shown on the left.
         </div>
         <a className="hover:cursor-pointer hover:underline" onClick={start}>
           Start game
@@ -111,65 +104,56 @@ export const Game = () => {
     ),
 
     running: (
-      <div className="grid w-full max-w-2xl flex-col items-center gap-8">
-        <div className="flex gap-8">
-          <div className="flex flex-col gap-2 pt-20">
-            {reversedGuitarStrings.map((guitarString) => {
+      <div className="flex w-full max-w-2xl items-center gap-4">
+        <div className="flex flex-col gap-8">
+          <div className="pl-12">
+            <CircleOfFifths selected={current.note} />
+          </div>
+
+          <div className="flex h-10 w-full justify-center gap-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
+              {current.guitarString}
+            </div>
+
+            {notes.map((_, index) => {
               return (
-                <div
-                  key={guitarString}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100"
+                <button
+                  key={index}
+                  onClick={() => checkAnswer(index)}
+                  disabled={selectedFret !== null}
+                  className={twMerge(
+                    'h-10 w-10 rounded-full bg-gray-200',
+                    calculateClasses(index),
+                  )}
                 >
-                  {guitarString}
-                </div>
+                  {index}
+                </button>
               );
             })}
           </div>
 
-          <div className="flex flex-col">
-            <CircleOfFifths selected={current.note} />
-
-            <div
-              className="flex h-10 w-full justify-center gap-x-4"
-              style={{ paddingTop: currentStringPaddingTop }}
-            >
-              {notes.map((_, index) => {
-                return (
-                  <button
-                    key={index}
-                    onClick={() => checkAnswer(index)}
-                    disabled={selectedFret !== null}
-                    className={twMerge(
-                      'h-10 w-10 rounded-full bg-gray-200',
-                      calculateClasses(index),
-                    )}
-                  >
-                    {index}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-between">
-          <div className="select-none rounded-full border border-gray-200 px-4 py-2 font-light text-gray-400">
-            {correctAnswers.length}/{answers.length} correct answers so far
-          </div>
-          <div className="flex gap-4">
+          <div className="flex justify-between">
             <button
-              className="rounded-full bg-gray-100 px-4 py-2 text-gray-800"
+              className="rounded-full border border-gray-600 px-4 py-2 text-gray-600"
               onClick={stop}
             >
               Stop
             </button>
-            <button
-              className="rounded-full bg-gray-700 px-4 py-2 text-gray-100"
-              onClick={showNextQuestion}
-              disabled={selectedFret === null}
-            >
-              Next
-            </button>
+            <div className="flex gap-4">
+              <div className="select-none rounded-full border border-gray-200 px-4 py-2 font-light text-gray-400">
+                <span className="tabular-nums">
+                  {correctAnswers.length}/{answers.length}
+                </span>{' '}
+                correct answers so far
+              </div>
+              <button
+                className="rounded-full bg-gray-700 px-4 py-2 text-gray-100"
+                onClick={showNextQuestion}
+                disabled={selectedFret === null}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
