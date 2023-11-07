@@ -17,7 +17,7 @@ export const Navbar = () => {
   const activeClasses = 'border-gray-700 hover:border-gray-700';
 
   return (
-    <div className="flex w-screen justify-center bg-gray-100">
+    <div className="min-w-screen flex justify-center bg-gray-100">
       <div className={CONTAINER_CLASSES}>
         <div className="flex min-w-[100px] select-none items-center whitespace-nowrap py-4 text-gray-400">
           Guitar Toolkit
