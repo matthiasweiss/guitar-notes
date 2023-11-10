@@ -90,7 +90,7 @@ export const Game = () => {
 
   const componentMap: Record<State, ReactNode> = {
     initial: (
-      <div className="flex flex-col gap-4 pt-10">
+      <div className="flex flex-col gap-4 pt-8">
         <div>
           This game is used to practice where the 12 different notes are located
           on each fret on the guitar. In each round, a random note and string
@@ -106,7 +106,7 @@ export const Game = () => {
       <div className="flex flex-col gap-4 lg:gap-6">
         <div className="flex flex-col items-center gap-4 lg:flex-row">
           <div className="flex justify-center">
-            <div className="flex gap-10 pt-2 lg:flex-col lg:gap-4">
+            <div className="flex gap-10 lg:flex-col lg:gap-4">
               <div className="pt-12 lg:pl-12">
                 <CircleOfFifths selected={current.note} />
               </div>
