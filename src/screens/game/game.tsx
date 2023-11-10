@@ -113,7 +113,7 @@ export const Game = () => {
                 <CircleOfFifths selected={current.note} />
               </div>
 
-              <div className="flex w-full flex-col gap-1 lg:flex-row lg:gap-2">
+              <div className="flex w-full flex-col gap-2 lg:flex-row lg:gap-2">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
                   {current.guitarString}
                 </div>
