@@ -90,7 +90,7 @@ export const Game = () => {
 
   const componentMap: Record<State, ReactNode> = {
     initial: (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 pt-10">
         <div>
           This game is used to practice where the 12 different notes are located
           on each fret on the guitar. In each round, a random note and string
@@ -104,14 +104,14 @@ export const Game = () => {
 
     running: (
       <div className="flex flex-col gap-6">
-        <div className="flex flex-col items-center gap-4 md:flex-row">
+        <div className="flex flex-col items-center gap-4 lg:flex-row">
           <div className="flex justify-center">
-            <div className="flex gap-20 md:flex-col md:gap-4">
-              <div className="pt-12 md:pl-12">
+            <div className="flex gap-20 py-8 lg:flex-col lg:gap-4 lg:py-0">
+              <div className="pt-12 lg:pl-12">
                 <CircleOfFifths selected={current.note} />
               </div>
 
-              <div className="flex w-full flex-col gap-2 md:flex-row">
+              <div className="flex w-full flex-col gap-2 lg:flex-row">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
                   {current.guitarString}
                 </div>
@@ -136,22 +136,22 @@ export const Game = () => {
           </div>
         </div>
 
-        <div className="flex gap-4 md:justify-between">
-          <div className="w-fit select-none rounded-full border border-gray-200 px-4 py-2 font-light text-gray-400">
+        <div className="flex gap-4 lg:justify-between">
+          <div className="w-fit select-none rounded-md border border-gray-200 px-4 py-2 font-light text-gray-400">
             <span className="tabular-nums">
-              {correctAnswers.length}/{answers.length} correct answers
+              {correctAnswers.length}/{answers.length}
             </span>
           </div>
           <div className="flex gap-4">
             <button
-              className="rounded-full border border-gray-600 px-4 py-2 text-gray-600"
+              className="rounded-md border border-gray-600 px-4 py-2 text-gray-600"
               onClick={stop}
             >
               Stop
             </button>
             <div className="flex gap-4">
               <button
-                className="rounded-full bg-gray-700 px-4 py-2 text-gray-100"
+                className="rounded-md bg-gray-700 px-4 py-2 text-gray-100"
                 onClick={showNextQuestion}
                 disabled={selectedFret === null}
               >
@@ -169,7 +169,7 @@ export const Game = () => {
           Your final score was {correctAnswers.length}/{answers.length}
         </div>
         <button
-          className="rounded-full bg-gray-700 px-4 py-2 text-gray-100"
+          className="rounded-md bg-gray-700 px-4 py-2 text-gray-100"
           onClick={restart}
         >
           Restart game

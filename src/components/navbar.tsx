@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { CONTENT_MAX_WIDTH, PATHS } from '../constants';
+import { PATHS } from '../constants';
 
 const LINKS = [
   { path: PATHS.HOME, label: 'Home' },
@@ -11,30 +11,27 @@ export const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex w-screen justify-center bg-gray-100">
-      <div className={twMerge('flex w-full gap-4', CONTENT_MAX_WIDTH)}>
-        <div className="flex min-w-[100px] select-none items-center whitespace-nowrap py-4 text-gray-400">
-          Guitar Toolkit
-        </div>
-        <ul className="flex gap-4 py-4">
-          {LINKS.map((link) => {
-            return (
-              <li key={link.path}>
-                <Link
-                  className={twMerge(
-                    'border-b-2 border-gray-200 px-8 py-4 no-underline hover:border-gray-300',
-                    pathname === link.path &&
-                      'border-gray-600 hover:border-gray-600',
-                  )}
-                  to={link.path}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+    <div className="flex h-full flex-col gap-4 rounded-md bg-slate-50 px-6 py-10 md:p-10 md:pb-44 md:pr-20 lg:h-fit">
+      <div className="flex select-none items-center whitespace-nowrap text-gray-400">
+        Guitar Toolkit
       </div>
+      <ul className="flex flex-col gap-4">
+        {LINKS.map((link) => {
+          return (
+            <li key={link.path}>
+              <Link
+                className={twMerge(
+                  'text-gray-500 no-underline hover:border-gray-300',
+                  pathname === link.path && 'text-black',
+                )}
+                to={link.path}
+              >
+                {link.label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

@@ -1,15 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/navbar';
-import { CONTENT_MAX_WIDTH } from '../constants';
 
 export const Layout = () => {
-  const CONTAINER_CLASSES = `flex w-full flex-col items-center gap-4 ${CONTENT_MAX_WIDTH}`;
-
   return (
-    <div className="flex w-screen flex-col items-center gap-4">
-      <Navbar />
-      <div className={CONTAINER_CLASSES}>
-        <Outlet />
+    <div className="flex h-screen w-screen justify-center">
+      <div className="flex h-full w-full max-w-5xl gap-4 lg:py-10">
+        <Navbar />
+        <div className="flex flex-1 justify-center">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
