@@ -11,18 +11,15 @@ export const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex h-full flex-col gap-4 rounded-md bg-slate-50 px-6 py-10 md:p-10 md:pb-44 md:pr-20 lg:h-fit">
-      <div className="flex select-none items-center whitespace-nowrap text-gray-400">
-        Guitar Toolkit
-      </div>
+    <div className="flex h-fit flex-col gap-4 rounded-md bg-slate-50 px-4 py-10 md:p-10 md:pb-44 md:pr-20 lg:h-fit">
       <ul className="flex flex-col gap-4">
         {LINKS.map((link) => {
           return (
             <li key={link.path}>
               <Link
                 className={twMerge(
-                  'text-gray-500 no-underline hover:border-gray-300',
-                  pathname === link.path && 'text-black',
+                  'text-gray-200 no-underline hover:text-gray-300',
+                  pathname === link.path && 'text-black hover:text-black',
                 )}
                 to={link.path}
               >
