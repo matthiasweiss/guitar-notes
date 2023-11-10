@@ -1,6 +1,8 @@
 import { ReactNode, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import { CircleOfFifths } from '../../components/circle-of-fifths';
+import { PATHS } from '../../constants';
 import { GuitarString, useGuitarStrings } from '../../hooks/use-guitar-strings';
 import { Note, useNotes } from '../../hooks/use-notes';
 import { calculateFret } from './calculate-fret';
@@ -107,12 +109,12 @@ export const Game = () => {
         <div className="flex flex-col items-center gap-4 lg:flex-row">
           <div className="flex justify-center">
             <div className="flex gap-10 lg:flex-col lg:gap-4">
-              <div className="pt-12 lg:pl-12">
+              <div className="pt-10 lg:pl-11">
                 <CircleOfFifths selected={current.note} />
               </div>
 
-              <div className="flex w-full flex-col gap-2 lg:flex-row">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
+              <div className="flex w-full flex-col gap-1 lg:flex-row lg:gap-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
                   {current.guitarString}
                 </div>
 
@@ -123,7 +125,7 @@ export const Game = () => {
                       onClick={() => checkAnswer(index)}
                       disabled={selectedFret !== null}
                       className={twMerge(
-                        'h-10 w-10 rounded-full bg-gray-200',
+                        'h-9 w-9 rounded-full bg-gray-200 text-sm',
                         calculateClasses(index),
                       )}
                     >
@@ -174,6 +176,7 @@ export const Game = () => {
         >
           Restart game
         </button>
+        <Link to={PATHS.HOME}> or go back to home page</Link>
       </div>
     ),
   };
