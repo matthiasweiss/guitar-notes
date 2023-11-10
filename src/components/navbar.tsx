@@ -19,7 +19,7 @@ export const Navbar = () => {
               <Link
                 className={twMerge(
                   'text-gray-200 no-underline hover:text-gray-300',
-                  pathname === link.path && 'text-black hover:text-black',
+                  pathname === link.path && 'text-gray-700 hover:text-gray-700',
                 )}
                 to={link.path}
               >

@@ -109,7 +109,7 @@ export const Game = () => {
         <div className="flex flex-col items-center gap-4 md:flex-row">
           <div className="flex justify-center">
             <div className="flex gap-10 md:flex-col md:gap-4">
-              <div className="pt-10 md:pl-11">
+              <div className="pt-11 md:pl-11">
                 <CircleOfFifths selected={current.note} />
               </div>
 
