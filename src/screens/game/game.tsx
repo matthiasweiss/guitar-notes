@@ -93,13 +93,12 @@ export const Game = () => {
       <div className="flex flex-col gap-4">
         <div>
           This game is used to practice where the 12 different notes are located
-          on each of the frets on the guitar. In each round, a random note and
-          string are generated and you have to pick the correct fret for that
-          note on the given string. The current string is shown on the left.
+          on each fret on the guitar. In each round, a random note and string
+          are generated and you have to pick the correct fret for that note on
+          the given string. The current string is shown on the left (or on top
+          if you are on mobile).
         </div>
-        <a className="hover:cursor-pointer hover:underline" onClick={start}>
-          Start game
-        </a>
+        <a onClick={start}>Start game</a>
       </div>
     ),
 

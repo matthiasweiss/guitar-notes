@@ -10,15 +10,9 @@ const LINKS = [
 export const Navbar = () => {
   const { pathname } = useLocation();
 
-  const CONTAINER_CLASSES = `flex w-full gap-4 ${CONTENT_MAX_WIDTH}`;
-
-  const defaultClasses =
-    'px-8 py-4 border-b-2 border-gray-200 hover:border-gray-300';
-  const activeClasses = 'border-gray-700 hover:border-gray-700';
-
   return (
     <div className="flex w-screen justify-center bg-gray-100">
-      <div className={CONTAINER_CLASSES}>
+      <div className={twMerge('flex w-full gap-4', CONTENT_MAX_WIDTH)}>
         <div className="flex min-w-[100px] select-none items-center whitespace-nowrap py-4 text-gray-400">
           Guitar Toolkit
         </div>
@@ -28,8 +22,9 @@ export const Navbar = () => {
               <li key={link.path}>
                 <Link
                   className={twMerge(
-                    defaultClasses,
-                    pathname === link.path && activeClasses,
+                    'border-b-2 border-gray-200 px-8 py-4 no-underline hover:border-gray-300',
+                    pathname === link.path &&
+                      'border-gray-600 hover:border-gray-600',
                   )}
                   to={link.path}
                 >
