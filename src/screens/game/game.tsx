@@ -104,35 +104,46 @@ export const Game = () => {
     ),
 
     running: (
-      <div className="flex w-full max-w-2xl items-center gap-4">
-        <div className="flex flex-col gap-8">
-          <div className="pl-12">
-            <CircleOfFifths selected={current.note} />
-          </div>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col items-center gap-4 md:flex-row">
+          <div className="flex justify-center">
+            <div className="flex gap-20 md:flex-col md:gap-4">
+              <div className="pt-12 md:pl-12">
+                <CircleOfFifths selected={current.note} />
+              </div>
 
-          <div className="flex h-10 w-full justify-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
-              {current.guitarString}
+              <div className="flex w-full flex-col gap-2 md:flex-row">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
+                  {current.guitarString}
+                </div>
+
+                {notes.map((_, index) => {
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => checkAnswer(index)}
+                      disabled={selectedFret !== null}
+                      className={twMerge(
+                        'h-10 w-10 rounded-full bg-gray-200',
+                        calculateClasses(index),
+                      )}
+                    >
+                      {index}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-
-            {notes.map((_, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => checkAnswer(index)}
-                  disabled={selectedFret !== null}
-                  className={twMerge(
-                    'h-10 w-10 rounded-full bg-gray-200',
-                    calculateClasses(index),
-                  )}
-                >
-                  {index}
-                </button>
-              );
-            })}
           </div>
+        </div>
 
-          <div className="flex justify-between">
+        <div className="flex gap-4 md:justify-between">
+          <div className="w-fit select-none rounded-full border border-gray-200 px-4 py-2 font-light text-gray-400">
+            <span className="tabular-nums">
+              {correctAnswers.length}/{answers.length} correct answers
+            </span>
+          </div>
+          <div className="flex gap-4">
             <button
               className="rounded-full border border-gray-600 px-4 py-2 text-gray-600"
               onClick={stop}
@@ -140,12 +151,6 @@ export const Game = () => {
               Stop
             </button>
             <div className="flex gap-4">
-              <div className="select-none rounded-full border border-gray-200 px-4 py-2 font-light text-gray-400">
-                <span className="tabular-nums">
-                  {correctAnswers.length}/{answers.length}
-                </span>{' '}
-                correct answers so far
-              </div>
               <button
                 className="rounded-full bg-gray-700 px-4 py-2 text-gray-100"
                 onClick={showNextQuestion}

@@ -1,7 +1,7 @@
 import { Note } from '../hooks/use-notes';
 import { NoteCard } from './note-card';
 
-type CircleOfFifthsProps = { selected?: Note };
+type CircleOfFifthsProps = { selected?: Note; direction?: Direction };
 
 export const CircleOfFifths = ({ selected }: CircleOfFifthsProps) => {
   const circleOfFifths: Note[] = [
@@ -20,7 +20,7 @@ export const CircleOfFifths = ({ selected }: CircleOfFifthsProps) => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-2">
+    <div className="flex flex-col justify-center gap-2 md:flex-row">
       {circleOfFifths.map((note) => {
         return (
           <div className={selected && selected !== note ? 'opacity-40' : ''}>
