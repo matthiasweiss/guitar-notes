@@ -20,7 +20,7 @@ export const CircleOfFifths = ({ selected }: CircleOfFifthsProps) => {
   ];
 
   return (
-    <div className="flex flex-col justify-center gap-2 lg:flex-row lg:gap-2">
+    <div className="flex flex-col justify-center gap-2 md:flex-row md:gap-2">
       {circleOfFifths.map((note) => {
         return (
           <div className={selected && selected !== note ? 'opacity-40' : ''}>

@@ -105,15 +105,15 @@ export const Game = () => {
     ),
 
     running: (
-      <div className="flex flex-col gap-4 lg:gap-6">
-        <div className="flex flex-col items-center gap-4 lg:flex-row">
+      <div className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col items-center gap-4 md:flex-row">
           <div className="flex justify-center">
-            <div className="flex gap-10 lg:flex-col lg:gap-4">
-              <div className="pt-10 lg:pl-11">
+            <div className="flex gap-10 md:flex-col md:gap-4">
+              <div className="pt-10 md:pl-11">
                 <CircleOfFifths selected={current.note} />
               </div>
 
-              <div className="flex w-full flex-col gap-2 lg:flex-row lg:gap-2">
+              <div className="flex w-full flex-col gap-2 md:flex-row md:gap-2">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-700 text-cyan-100">
                   {current.guitarString}
                 </div>
@@ -138,7 +138,7 @@ export const Game = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 md:gap-4 lg:justify-between">
+        <div className="flex gap-2 md:justify-between md:gap-4">
           <div className="w-fit select-none rounded-md border border-gray-200 px-4 py-2 font-light text-gray-400">
             <span className="tabular-nums">
               {correctAnswers.length}/{answers.length}
