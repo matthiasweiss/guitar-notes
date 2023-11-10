@@ -1,7 +1,7 @@
 import { Note } from '../hooks/use-notes';
 import { NoteCard } from './note-card';
 
-type CircleOfFifthsProps = { selected?: Note; direction?: Direction };
+type CircleOfFifthsProps = { selected?: Note };
 
 export const CircleOfFifths = ({ selected }: CircleOfFifthsProps) => {
   const circleOfFifths: Note[] = [
