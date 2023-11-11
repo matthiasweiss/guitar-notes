@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PATHS } from '../../constants';
+import { ROUTES } from '../../routes';
 
 export const Home = () => {
   return (
@@ -11,10 +11,10 @@ export const Home = () => {
           the fretboard and to assist me while practicing the guitar.
           <br />
           <br />
-          <Link to={PATHS.GAME}>This game</Link> aims at improving the knowledge
-          of notes around the fretboard. It generates a random note and string
-          combination and you then have to guess on which fret of that string
-          the given is located.
+          <Link to={ROUTES.game.path}>This game</Link> aims at improving the
+          knowledge of notes around the fretboard. It generates a random note
+          and string combination and you then have to guess on which fret of
+          that string the given is located.
         </div>
       </div>
     </>
