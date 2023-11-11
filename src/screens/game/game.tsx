@@ -1,8 +1,6 @@
 import { ReactNode, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import { CircleOfFifths } from '../../components/circle-of-fifths';
-import { PATHS } from '../../constants';
 import { GuitarString, useGuitarStrings } from '../../hooks/use-guitar-strings';
 import { Note, useNotes } from '../../hooks/use-notes';
 import { calculateFret } from './calculate-fret';
@@ -176,7 +174,6 @@ export const Game = () => {
         >
           Restart game
         </button>
-        <Link to={PATHS.HOME}> or go back to home page</Link>
       </div>
     ),
   };
