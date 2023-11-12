@@ -6,8 +6,8 @@ export const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex h-full flex-col gap-4 rounded-md bg-slate-50 px-6 py-10 sm:px-10 md:p-10 lg:h-fit lg:pb-44 lg:pr-20">
-      <ul className="flex flex-1 flex-col gap-4">
+    <div className="flex h-full flex-col gap-4 rounded-md bg-slate-50 px-6 py-10 md:px-8 lg:h-fit lg:p-10 lg:pb-44 lg:pr-20">
+      <ul className="flex flex-col gap-4">
         {Object.entries(ROUTES).map(([name, { path }]) => {
           return (
             <li key={path}>
@@ -24,9 +24,6 @@ export const Navbar = () => {
           );
         })}
       </ul>
-      <div className="mt-auto text-gray-300">
-        {window.innerWidth}x{window.innerHeight}px
-      </div>
     </div>
   );
 };
