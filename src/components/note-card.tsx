@@ -1,9 +1,9 @@
 import { twMerge } from 'tailwind-merge';
 import { Note, useNotes } from '../hooks/use-notes';
 
-type NoteCardProps = { note: Note; className?: string };
+type NoteCardProps = { note: Note; className?: string; isLarge?: boolean };
 
-export const NoteCard = ({ note, className }: NoteCardProps) => {
+export const NoteCard = ({ note, className, isLarge }: NoteCardProps) => {
   const { notesDataMap } = useNotes();
   const noteSpecificClasses = notesDataMap[note].classList;
 
@@ -13,7 +13,12 @@ export const NoteCard = ({ note, className }: NoteCardProps) => {
   return (
     <div
       key={note}
-      className={twMerge(defaultClasses, noteSpecificClasses, className)}
+      className={twMerge(
+        defaultClasses,
+        noteSpecificClasses,
+        className,
+        isLarge && 'h-16 w-16',
+      )}
     >
       {note}
     </div>
