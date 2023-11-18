@@ -58,12 +58,12 @@ export const Game = () => {
   };
 
   const stop = () => {
-    clearAnswer();
-    setAnswers([]);
     setState('stopped');
   };
 
   const restart = () => {
+    clearAnswer();
+    setAnswers([]);
     setState('running');
   };
 
@@ -90,7 +90,7 @@ export const Game = () => {
 
   const componentMap: Record<State, ReactNode> = {
     initial: (
-      <div className="flex flex-col gap-4 pt-8">
+      <div className="flex flex-col gap-4 pt-6">
         <div>
           This game is used to practice where the 12 different notes are located
           on each fret on the guitar. In each round, a random note and string
@@ -164,7 +164,7 @@ export const Game = () => {
     ),
 
     stopped: (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 py-6">
         <div>
           Your final score was {correctAnswers.length}/{answers.length}
         </div>
