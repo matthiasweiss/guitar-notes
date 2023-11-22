@@ -11,7 +11,7 @@ export const Navbar = () => {
       Object.entries(ROUTES).map(([name, { path }]) => {
         return { name, path };
       }),
-    [ROUTES],
+    [],
   );
 
   return (

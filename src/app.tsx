@@ -10,7 +10,7 @@ export const App = () => {
       Object.entries(ROUTES).map(([name, props]) => {
         return { name, ...props };
       }),
-    [ROUTES],
+    [],
   );
 
   return (
