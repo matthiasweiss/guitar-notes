@@ -1,11 +1,10 @@
 import { twMerge } from 'tailwind-merge';
-import { Note, useNotes } from '../hooks/use-notes';
+import { NOTES_DATA_MAP, Note } from '../models/notes';
 
 type NoteCardProps = { note: Note; className?: string; isLarge?: boolean };
 
 export const NoteCard = ({ note, className, isLarge }: NoteCardProps) => {
-  const { notesDataMap } = useNotes();
-  const noteSpecificClasses = notesDataMap[note].classList;
+  const noteSpecificClasses = NOTES_DATA_MAP[note].classList;
 
   const defaultClasses =
     'flex w-fit items-center justify-center rounded-full w-9 h-9 text-sm';
@@ -16,8 +15,8 @@ export const NoteCard = ({ note, className, isLarge }: NoteCardProps) => {
       className={twMerge(
         defaultClasses,
         noteSpecificClasses,
-        className,
         isLarge && 'h-16 w-16',
+        className,
       )}
     >
       {note}

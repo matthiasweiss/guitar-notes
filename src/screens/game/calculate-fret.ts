@@ -1,18 +1,17 @@
-import { GuitarString } from '../../hooks/use-guitar-strings';
-import { Note, useNotes } from '../../hooks/use-notes';
+import { NOTES, Note } from '../../models/notes';
+import { GuitarString } from './guitar-strings';
 
 export const calculateFret = (params: {
   note: Note;
   guitarString: GuitarString;
 }): number => {
   const { note, guitarString } = params;
-  const { notes } = useNotes();
 
-  const noteIndex = notes.indexOf(note);
-  const guitarStringIndex = notes.indexOf(
+  const noteIndex = NOTES.indexOf(note);
+  const guitarStringIndex = NOTES.indexOf(
     guitarString === 'e' ? 'E' : guitarString,
   );
 
   const offset = noteIndex - guitarStringIndex;
-  return offset >= 0 ? offset : offset + notes.length;
+  return offset >= 0 ? offset : offset + NOTES.length;
 };

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { NoteCard } from '../../components/note-card';
-import { Mode, useModes } from '../../hooks/use-modes';
-import { Note, useNotes } from '../../hooks/use-notes';
+import { NOTES, Note } from '../../models/notes';
+import { randomElement } from '../../utils';
+import { MODES, Mode } from './modes';
 
 export const Key = () => {
-  const { randomNote } = useNotes();
-  const { randomMode } = useModes();
+  const randomNote = () => randomElement(NOTES);
+  const randomMode = () => randomElement(MODES);
 
-  const [note, setNote] = useState<Note>(randomNote());
+  const [note, setNote] = useState<Note>(randomNote);
   const [mode, setMode] = useState<Mode>(randomMode());
   const [areModesEnabled, setAreModesEnabled] = useState(false);
 
@@ -24,7 +25,11 @@ export const Key = () => {
             setAreModesEnabled((_areModesEnabled) => !_areModesEnabled)
           }
         >
-          <input type="checkbox" checked={areModesEnabled} />
+          <input
+            type="checkbox"
+            checked={areModesEnabled}
+            onChange={() => {}}
+          />
           <div>Enable Modes</div>
         </div>
 
