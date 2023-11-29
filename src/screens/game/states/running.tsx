@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { CircleOfFifths } from '../../../components/circle-of-fifths';
 import { NOTES } from '../../../models/notes';
@@ -8,9 +8,7 @@ import { GUITAR_STRINGS } from '../guitar-strings';
 import { useGame } from '../use-game';
 
 export const Running = () => {
-  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
-
-  const current = useMemo(() => {
+  const generateRandomQuestion = useCallback(() => {
     const note = randomElement(NOTES);
     const guitarString = randomElement(GUITAR_STRINGS);
     const fret = calculateFret({ note, guitarString });
@@ -20,7 +18,9 @@ export const Running = () => {
       guitarString,
       fret,
     };
-  }, [currentQuestionNumber]);
+  }, []);
+
+  const [current, setCurrent] = useState(generateRandomQuestion());
 
   const {
     answers,
@@ -36,7 +36,7 @@ export const Running = () => {
 
   const showNextQuestion = () => {
     clearAnswer();
-    setCurrentQuestionNumber((_currentQuestion) => _currentQuestion + 1);
+    setCurrent(generateRandomQuestion());
   };
 
   const checkAnswer = (selectedFret: number) => {
